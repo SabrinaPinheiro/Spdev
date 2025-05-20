@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sabrina Pinheiro - Desenvolvedora Full Stack">
+    <title>SPdev - Sabrina Pinheiro</title>
+    <link rel="icon" type="image/svg+xml" href="/public/favicon/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Suaviza o scroll para os links do menu
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Altura do cabeçalho fixo
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    // Posição do elemento alvo
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    // Posição de rolagem atual
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; // 20px de margem extra
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Atualiza a URL sem acionar o scroll novamente
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
+                    }
+                }
+            });
+        });
+            // Ajusta o scroll ao carregar a página com âncora na URL
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const targetId = window.location.hash;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.scrollY - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'auto' // Rola instantaneamente para a posição correta
+                    });
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo-link">
+                <img src="public/images/SPdev_LOGO_hor.png" alt="SPdev - Desenvolvimento Web" id="logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#sobre">Sobre Mim</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#experiencia">Experiência</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="introducao">
+        <div class="container">
+            <div class="intro-logo">
+                <img src="public/images/SPdev_LOGO_ver.png" alt="SPdev - Sabrina Pinheiro Desenvolvedora" class="vertical-logo">
+            </div>
+            <div class="intro-text">
+                <h1>Sabrina Pinheiro</h1>
+                <p>Desenvolvedora full stack com foco em sistemas web completos, unindo programação robusta e design de interface intuitivo. Transformo ideias em aplicações funcionais, acessíveis e visualmente eficientes, proporcionando experiências consistentes e impactantes para todos os usuários.</p>
+            </div>
+        </div>
+    </section>
+
+    <main id="main-content">
+        <section id="sobre" class="content-section">
+            <div class="container">
+                <h2>Sobre Mim</h2>
+                <div class="about-content">
+                    <p>Sou desenvolvedora full stack formada pela Infinity School, com foco na criação de sistemas web completos, funcionais e visualmente bem resolvidos. Busco sempre aliar performance, organização de código e uma experiência de uso fluida e intuitiva.</p>
+                    <p>Além da atuação na tecnologia, sou arquiteta e designer gráfico com mais de 20 anos de experiência na criação de espaços físicos e soluções visuais que integram estética, funcionalidade e propósito. Levo para o desenvolvimento web o mesmo olhar detalhista, criativo e estratégico que sempre guiou meu trabalho.</p>
+                    <p>Acredito que tecnologia e design devem caminhar juntos — seja no ambiente físico ou digital — para gerar soluções acessíveis, coerentes e verdadeiramente centradas nas pessoas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades" class="content-section highlighted-section gradient-bg">
+            <div class="container">
+                <h2>Habilidades</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h3><i class="fab fa-js" style="color: #F7DF1E;"></i> JavaScript</h3>
+                        <p>Programação moderna para aplicações interativas e integrações com APIs, utilizando recursos avançados como async/await, promises e manipulação do DOM.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fab fa-microsoft" style="color: #3178C6;"></i> TypeScript</h3>
+                        <p>Desenvolvimento de aplicações robustas e seguras com tipagem estática e escalabilidade aprimorada.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fab fa-react" style="color: #61DAFB;"></i> React.js</h3>
+                        <p>Criação de interfaces dinâmicas e componentes reutilizáveis com foco em performance e usabilidade.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fas fa-chevron-right" style="color: #d9d9d9;"></i> Next.js</h3>
+                        <p>Desenvolvimento de aplicações full stack com SSR (Server-Side Rendering), rotas otimizadas e API integrada.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fab fa-python" style="color: #3776AB;"></i> Python</h3>
+                        <p>Desenvolvimento de aplicações web, automação e análise de dados com uma linguagem poderosa e versátil.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fas fa-server" style="color: #44B78B;"></i> Django</h3>
+                        <p>Construção de backends seguros, escaláveis e organizados com Python e o framework Django.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fab fa-html5" style="color: #E34F26;"></i> <i class="fas fa-universal-access" style="color: #4A6CF7;"></i> HTML5 & Acessibilidade</h3>
+                        <p>Estruturação semântica de conteúdo com foco em boas práticas e conformidade com diretrizes WCAG.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fab fa-css3-alt" style="color: #1572B6;"></i> <i class="fas fa-wind" style="color: #38BDF8;"></i> CSS3 & Tailwind CSS</h3>
+                        <p>Estilização moderna e eficiente com Flexbox, Grid e variáveis CSS, combinada com a produtividade do Tailwind CSS para criar interfaces responsivas e consistentes em diferentes dispositivos.</p>
+                    </div>
+                    <div class="skill-item">
+                        <h3><i class="fas fa-plug" style="color: #6C63FF;"></i> Integração Frontend + Backend</h3>
+                        <p>Desenvolvimento de aplicações completas com comunicação eficaz entre client-side e server-side via APIs REST e endpoints dinâmicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="content-section highlighted-section">
+            <div class="container">
+                <h2>Projetos</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="public/images/Projeto_FinUp.png" alt="FinUp - Sistema de Finanças Pessoais">
+                        <h3>FinUp</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Zustand</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <p>Aplicação web para controle financeiro pessoal, permitindo o registro de receitas e despesas, categorização por tipo, visualização de saldo mensal e geração de gráficos. Desenvolvido com React e gerenciamento de estado leve via Zustand.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Projeto</a>
+                            <a href="#" target="_blank" style="background: #333;"><i class="fab fa-github"></i> Código</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="public/images/Projeto_BarberGo.png" alt="BarberGo - Sistema de Barbearia">
+                        <h3>BarberGo</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <p>Landing page moderna e funcional para barbearias, com exibição de serviços, equipe e horários de funcionamento. O sistema permite que clientes iniciem o agendamento diretamente via WhatsApp, facilitando o contato sem necessidade de login.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Projeto</a>
+                            <a href="#" target="_blank" style="background: #333;"><i class="fab fa-github"></i> Código</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="public/images/Projeto_EcoMarket.png" alt="EcoMarket - Marketplace Sustentável">
+                        <h3>EcoMarket</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Bootstrap</span>
+                        </div>
+                        <p>Plataforma web para compra e venda de produtos sustentáveis e eco-friendly, com cadastro de vendedores, gerenciamento de produtos, carrinho de compras e sistema de pagamento integrado. Desenvolvida em Django, priorizando segurança e escalabilidade.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Projeto</a>
+                            <a href="#" target="_blank" style="background: #333;"><i class="fab fa-github"></i> Código</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia" class="content-section">
+            <div class="container">
+                <h2>Experiência Profissional</h2>
+                <div class="experience-item">
+                    <h3>Desenvolvedora Full Stack Freelancer</h3>
+                    <p class="date">Jan 2024 – Atual</p>
+                    <ul>
+                        <li>Desenvolvimento de aplicações web completas com frontend em JavaScript/TypeScript (React, Next.js) e backend em Node.js e Python (Django).</li>
+                        <li>Criação de interfaces responsivas, acessíveis e otimizadas para SEO.</li>
+                        <li>Integração com APIs REST e backends customizados.</li>
+                        <li>Estruturação de banco de dados e lógica de autenticação.</li>
+                        <li>Desenvolvimento de funcionalidades completas, do front ao back, com foco em performance e escalabilidade.</li>
+                        <li>Utilização de Tailwind CSS para estilização ágil e consistente.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3>Estagiária em Desenvolvimento Web – XYZ Tech</h3>
+                    <p class="date">Jan 2023 – Dez 2023</p>
+                    <ul>
+                        <li>Suporte no desenvolvimento e manutenção de aplicações React com consumo de APIs externas.</li>
+                        <li>Colaboração em tarefas de backend com Django, incluindo modelagem de dados e endpoints REST.</li>
+                        <li>Correção de bugs, testes e melhorias em funcionalidades existentes.</li>
+                        <li>Participação ativa em dailies, revisões de código e processos ágeis.</li>
+                        <li>Aprimoramento da experiência do usuário em interfaces responsivas e acessíveis.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="content-section gradient-bg">
+            <div class="container">
+                <h2>Contato</h2>
+                <p>Vamos conversar! Entre em contato através das minhas redes sociais ou envie uma mensagem pelo formulário abaixo.</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/sabrinapinheiro" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/sabrinapinheiro" target="_blank">GitHub</a>
+                    <a href="mailto:spdevprojetos@gmail.com">Email</a>
+                    </div>
+                <form id="contact-form">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="subject">Assunto:</label>
+                    <input type="text" id="subject" name="subject">
+
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 - Desenvolvido por SPdev</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>
